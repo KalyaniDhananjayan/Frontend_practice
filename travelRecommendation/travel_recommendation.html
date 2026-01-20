@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBloom - Explore Dream Destinations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #searchInput {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            width: 300px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-search {
+            background: #16a085;
+            color: white;
+        }
+
+        .btn-search:hover {
+            background: #1abc9c;
+        }
+
+        .btn-clear {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-clear:hover {
+            background: #c0392b;
+        }
+
+        /* Home Page */
+        .home-section {
+            /* New York cityscape background - same as your image */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1920&q=80') center/cover no-repeat;
+            
+            /* Option 2: Use local image - uncomment this and comment above line */
+            /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/home-background.jpg') center/cover no-repeat; */
+            
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .home-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 50, 80, 0.5);
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 4rem;
+            max-width: 700px;
+        }
+
+        .home-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .home-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn-book {
+            background: #16a085;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+        }
+
+        .btn-book:hover {
+            background: #1abc9c;
+            transform: scale(1.05);
+        }
+
+        .social-icons {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: #3498db;
+            transform: scale(1.1);
+        }
+
+        /* About Us Page */
+        .about-section {
+            /* Same New York cityscape background */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1920&q=80') center/cover no-repeat;
+            
+            /* Option 2: Use local image - uncomment this and comment above line */
+            /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/about-background.jpg') center/cover no-repeat; */
+            
+            min-height: calc(100vh - 80px);
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .about-content h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .company-info {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .company-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-info p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .team-section h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member-icon {
+            width: 80px;
+            height: 80px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: #bdc3c7;
+            margin-bottom: 1rem;
+        }
+
+        .team-member .role {
+            background: #2980b9;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        /* Contact Us Page */
+        .contact-section {
+            /* Same New York cityscape background */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1920&q=80') center/cover no-repeat;
+            
+            /* Option 2: Use local image - uncomment this and comment above line */
+            /* background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/contact-background.jpg') center/cover no-repeat; */
+            
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            gap: 4rem;
+            color: white;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .contact-info p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .contact-form {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: #16a085;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+
+        .btn-submit:hover {
+            background: #1abc9c;
+        }
+
+        /* Results Section */
+        .results-section {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .result-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .result-card-content {
+            padding: 1.5rem;
+        }
+
+        .result-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .result-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .btn-visit {
+            background: #16a085;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-visit:hover {
+            background: #1abc9c;
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: #e74c3c;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+            </svg>
+            <span>TravelBloom</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#" onclick="showPage('home'); return false;">Home</a>
+            <a href="#" onclick="showPage('about'); return false;">About Us</a>
+            <a href="#" onclick="showPage('contact'); return false;">Contact Us</a>
+        </div>
+        <div class="search-container" id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Enter a destination or keyword">
+            <button class="btn btn-search" onclick="searchRecommendations()">Search</button>
+            <button class="btn btn-clear" onclick="clearResults()">Clear</button>
+        </div>
+    </nav>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="YouTube">📺</a>
+    </div>
+
+    <!-- Home Page -->
+    <section id="homePage" class="home-section">
+        <div class="home-content">
+            <h1>EXPLORE<br>DREAM<br>DESTINATION</h1>
+            <p>It encourages exploration of unfamiliar territories, embracing diverse cultures and landscapes, while pursuing the desired destination that captivates the heart and ignites a sense of wonder.</p>
+            <button class="btn btn-book">BOOK NOW</button>
+        </div>
+    </section>
+
+    <!-- About Us Page -->
+    <section id="aboutPage" class="about-section hidden">
+        <div class="about-content">
+            <h1>ABOUT US</h1>
+            
+            <div class="company-info">
+                <h2>Our Company</h2>
+                <p>Welcome to Our Company! We are a team of passionate individuals dedicated to providing excellent services/products to our customers. Our mission is to <strong>provide the best experience</strong> for people traveling to different destinations around the world.</p>
+                <p>Our values include integrity, innovation, customer satisfaction, and teamwork. We believe in <strong>putting our customers first</strong> and <strong>working together</strong> to achieve our goals.</p>
+                <p>Feel free to explore our website to learn more about what we offer!</p>
+            </div>
+
+            <div class="team-section">
+                <h2>Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-member-icon">👨‍💼</div>
+                        <h3>John Doe</h3>
+                        <p>John is responsible for...</p>
+                        <span class="role">CEO</span>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-member-icon">👩‍💼</div>
+                        <h3>Celina Thomas</h3>
+                        <p>Celina Thomas is responsible for...</p>
+                        <span class="role">Team Lead</span>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-member-icon">👨‍💻</div>
+                        <h3>Mike Tysen</h3>
+                        <p>Mike Tysen is responsible for...</p>
+                        <span class="role">Delivery Head</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Page -->
+    <section id="contactPage" class="contact-section hidden">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h1>CONTACT US</h1>
+                <p>Get in touch</p>
+            </div>
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="results-section hidden">
+        <div id="resultsContainer" class="results-container"></div>
+    </div>
+
+    <script src="travel_recommendation.js"></script>
+</body>
+</html>

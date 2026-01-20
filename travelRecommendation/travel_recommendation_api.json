@@ -1,0 +1,58 @@
+{
+  "beaches": [
+    {
+      "name": "Bondi Beach, Australia",
+      "imageUrl": "https://images.unsplash.com/photo-1514999037859-b486988734f1?w=600&h=400&fit=crop",
+      "description": "Famous beach in Sydney, Australia with golden sand and surf culture."
+    },
+    {
+      "name": "Copacabana Beach, Brazil",
+      "imageUrl": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&h=400&fit=crop",
+      "description": "Iconic beach in Rio de Janeiro, Brazil known for its lively atmosphere."
+    }
+  ],
+  "temples": [
+    {
+      "name": "Angkor Wat, Cambodia",
+      "imageUrl": "https://images.unsplash.com/photo-1563989804672-c1e9e1d22498?w=600&h=400&fit=crop",
+      "description": "Ancient temple complex in Cambodia, largest religious monument in the world."
+    },
+    {
+      "name": "Taj Mahal, India",
+      "imageUrl": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&h=400&fit=crop",
+      "description": "Iconic white marble mausoleum in Agra, India."
+    }
+  ],
+  "countries": [
+    {
+      "name": "Australia",
+      "cities": [
+        {
+          "name": "Sydney",
+          "imageUrl": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop",
+          "description": "A beautiful coastal city with a relaxed atmosphere, featuring the Sydney Opera House, Harbour Bridge, and stunning beaches."
+        },
+        {
+          "name": "Melbourne",
+          "imageUrl": "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=400&fit=crop",
+          "description": "Cultural capital known for its coffee culture, street art, and vibrant food scene."
+        }
+      ]
+    },
+    {
+      "name": "Brazil",
+      "cities": [
+        {
+          "name": "Rio de Janeiro",
+          "imageUrl": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&h=400&fit=crop",
+          "description": "Vibrant city famous for Christ the Redeemer statue, Carnival, and beautiful beaches."
+        },
+        {
+          "name": "São Paulo",
+          "imageUrl": "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=600&h=400&fit=crop",
+          "description": "Largest city in Brazil, known for its diverse culture, museums, and cuisine."
+        }
+      ]
+    }
+  ]
+}
